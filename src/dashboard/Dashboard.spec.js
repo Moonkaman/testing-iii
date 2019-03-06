@@ -69,5 +69,14 @@ describe('<Dashboard />', () => {
       fireEvent.click(closeBtn);
       getByText(/close gate/i);
     });
+
+    it('Cannnot toggle closed state when gate is locked', () => {
+      const {getByText} = render(<Dashboard closed={true} locked={true}/>)
+
+      const button = getByText(/open gate/i);
+
+      fireEvent.click(button);
+      getByText(/open gate/i);
+    });
   });
 });
