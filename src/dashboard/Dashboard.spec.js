@@ -2,6 +2,7 @@ import React from 'react';
 import {render, fireEvent, cleanup} from 'react-testing-library';
 import renderer from 'react-test-renderer';
 import 'jest-dom/extend-expect';
+import 'react-testing-library/cleanup-after-each';
 
 import Dashboard from './Dashboard';
 
@@ -75,9 +76,13 @@ describe('<Dashboard />', () => {
     it('Cannnot toggle closed state when gate is locked', () => {
       const {getByText} = render(<Dashboard/>)
 
-      const button = getByText(/open gate/i);
+      const closeBtn = getByText(/close gate/i);
+      const lockBtn = getByText(/lock gate/i);
 
-      fireEvent.click(button);
+      fireEvent.click(closeBtn);
+      fireEvent.click(lockBtn);
+      fireEvent.click(closeBtn);
+
       getByText(/open gate/i);
     });
   });
