@@ -35,9 +35,18 @@ describe('<Dashboard />', () => {
       fireEvent.click(lockBtn);
       getByText(/lock gate/i);
     });
+
+    it('Doesnt toggle locked if door is open', () => {
+      const{getByText} = render(<Dashboard/>)
+
+      const button = getByText(/lock gate/i);
+
+      fireEvent.click(button);
+      getByText(/lock gate/i);
+    });
   });
 
-  describe('toggleLocked()', () => {
+  describe('toggleClosed()', () => {
     it('Toggles closed state and updates display on click', () => {
       const {getByText} = render(<Dashboard/>);
       const closeBtn = getByText(/close gate/i);
