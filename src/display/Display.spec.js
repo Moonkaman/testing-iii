@@ -30,7 +30,7 @@ describe('<Display />', () => {
 
     it('Has red-led class when closed', () => {
       const{getByText} = render(<Display closed={true} />);
-      expect(getByText(/closed/i)).toHaveClass('red-led')
+      expect(getByText(/closed/i)).toHaveClass('red-led');
     });
   });
 
@@ -55,7 +55,7 @@ describe('<Display />', () => {
     it.skip('Has red-led class when locked', () => {
       const{getByText} = render(<Display locked={true} closed={true} />);
       console.log(getByText(/locked/i).classList)
-      expect(getByText(/locked/i)).toHaveClass('red-led')
+      expect(getByText(/locked/i)).toHaveClass('red-led');
     });
   });
 });
