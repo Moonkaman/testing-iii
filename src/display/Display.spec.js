@@ -10,14 +10,24 @@ describe('<Display />', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('Displays correct gate lock value', () => {
+  it('Displays correct default gate lock value', () => {
     const {getByText} = render(<Display />);
     getByText(/unlocked/i);
   });
 
-  it('Displays correct gate position value', () => {
+  it('Displays correct deflaut gate position value', () => {
     const {getByText} = render(<Display />);
     getByText(/open/i);
+  });
+
+  it('Displays open text if open is true', () => {
+    const {getByText} = render(<Display closed={true} />)
+    getByText(/closed/i);
+  });
+
+  it('Displays locked text if locked is true', () => {
+    const {getByText} = render(<Display closed={true} locked={true} />)
+    getByText(/locked/i);
   });
 });
 
