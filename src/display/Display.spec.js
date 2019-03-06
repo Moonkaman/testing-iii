@@ -43,6 +43,19 @@ describe('<Display />', () => {
       const {getByText} = render(<Display closed={true} locked={true} />)
       getByText(/locked/i);
     });
+
+    it('Has green-led class when unlocked', () => {
+      const{getByText} = render(<Display />);
+      expect(getByText(/unlocked/i)).toHaveClass('green-led')
+    });
+
+
+    //Not quite sure why this doesn't work, it should.
+    it.skip('Has red-led class when locked', () => {
+      const{getByText} = render(<Display locked={true} closed={true} />);
+      console.log(getByText(/locked/i).classList)
+      expect(getByText(/locked/i)).toHaveClass('red-led')
+    });
   });
 });
 

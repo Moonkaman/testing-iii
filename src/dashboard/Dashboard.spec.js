@@ -13,7 +13,7 @@ describe('<Dashboard />', () => {
 
   describe('toggleLocked()', () => {
     it('Toggles locked state and updates display on click', () => {
-      const {getByText} = render(<Dashboard closed={true} locked={false}/>);
+      const {getByText} = render(<Dashboard />);
       const lockBtn = getByText(/lock gate/i);
 
       getByText(/unlocked/i);
@@ -71,7 +71,7 @@ describe('<Dashboard />', () => {
     });
 
     it('Cannnot toggle closed state when gate is locked', () => {
-      const {getByText} = render(<Dashboard closed={true} locked={true}/>)
+      const {getByText} = render(<Dashboard/>)
 
       const button = getByText(/open gate/i);
 
